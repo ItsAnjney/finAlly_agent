@@ -26,7 +26,7 @@ def get_watsonx_model():
             GenParams.REPETITION_PENALTY: 1.05
         }
         model = ModelInference(
-            model_id="meta-llama/llama-3-3-70b-instruct",
+            model_id=os.getenv("WATSONX_MODEL_ID", "meta-llama/llama-3-3-70b-instruct"),
             credentials=creds,
             project_id=os.getenv("IBM_PROJECT_ID"),
             params=parameters
