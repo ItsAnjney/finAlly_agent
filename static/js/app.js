@@ -56,27 +56,23 @@ function resetAgentTrail() {
     document.querySelectorAll('.trail-step').forEach(el => el.classList.remove('active'));
 }
 
+// Maps the backend's authoritative "agent" field (from app.py's classify_intent)
+// to a display name + stamp color. Single source of truth lives server-side;
+// this just decides how to *show* whatever the router actually decided.
+const AGENT_DISPLAY = {
+    audit:       { name: "Compliance & Audit Agent", stamp: "stamp-audit" },
+    eligibility: { name: "Scheme Guide Agent",        stamp: "stamp-scheme" },
+    checklist:   { name: "Document Prep Agent",        stamp: "stamp-doc" },
+    job:         { name: "Job Mentor Agent",           stamp: "stamp-jobs" },
+    scheme:      { name: "Scheme Guide Agent",         stamp: "stamp-scheme" },
+    router:      { name: "Router Agent",               stamp: "stamp-scheme" },
+};
+
 // Core Message Logic
 async function sendMessage() {
     const inputField = document.getElementById('user-input');
     const message = inputField.value.trim();
     if (!message) return;
-
-    // Determine intent for styling the stamp BEFORE sending
-    const msgLower = message.toLowerCase();
-    let agentName = "Scheme Guide Agent";
-    let stampClass = "stamp-scheme";
-
-    if (msgLower.includes("job") || msgLower.includes("work") || msgLower.includes("hire") || msgLower.includes("gig")) {
-        agentName = "Job Mentor Agent";
-        stampClass = "stamp-jobs";
-    } else if (msgLower.includes("audit") || msgLower.includes("expense") || msgLower.includes("receipt") || msgLower.includes("ledger")) {
-        agentName = "Compliance & Audit Agent";
-        stampClass = "stamp-audit";
-    } else if (msgLower.includes("document") || msgLower.includes("checklist")) {
-        agentName = "Document Prep Agent";
-        stampClass = "stamp-doc";
-    }
 
     // Append User Message
     appendMessage(message, 'user-message');
@@ -104,7 +100,9 @@ async function sendMessage() {
         resetAgentTrail();
 
         if (response.ok) {
-            appendMessage(data.response, 'bot-message', agentName, stampClass);
+            // Use whichever agent the backend actually routed to, not a guess
+            const display = AGENT_DISPLAY[data.agent] || { name: "FinAlly Agent", stamp: "stamp-scheme" };
+            appendMessage(data.response, 'bot-message', display.name, display.stamp);
         } else {
             appendMessage("Error: " + data.error, 'bot-message', "System Error", "stamp-scheme");
         }
