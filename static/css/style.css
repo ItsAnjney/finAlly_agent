@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0f19; /* Deep Ink Background */
+    color: #f1f5f9;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.fraunces-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background-color: #111827; /* Slightly lighter ink */
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #1f2937;
+}
+
+.brand h2 {
+    font-family: 'Fraunces', serif;
+    color: #f59e0b; /* Marigold */
+    font-size: 28px;
+}
+
+.badge {
+    background-color: #374151;
+    color: #9ca3af;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 40px;
+}
+
+.nav-links li {
+    padding: 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+    color: #cbd5e1;
+}
+
+.nav-links li:hover, .nav-links li.active {
+    background-color: #1f2937;
+    color: #ffffff;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 0 40px 30px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Agent Trail (Live Routing UI) */
+.agent-trail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+    border-bottom: 1px solid #1f2937;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: #4b5563;
+}
+
+.trail-step {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.trail-step.active {
+    background-color: #f59e0b;
+    color: #000;
+    font-weight: 500;
+}
+
+.tab-content {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.tab-content.active {
+    display: flex;
+}
+
+/* Chat History */
+.chat-history {
+    flex-grow: 1;
+    background-color: transparent;
+    padding: 10px 20px 20px 0;
+    margin: 10px 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 18px 24px;
+    border-radius: 12px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.bot-message {
+    background-color: #1e293b;
+    align-self: flex-start;
+    border: 1px solid #334155;
+}
+
+.user-message {
+    background-color: #334155;
+    align-self: flex-end;
+}
+
+/* Colored Agent Stamps */
+.agent-stamp {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.stamp-scheme { color: #f59e0b; } /* Marigold */
+.stamp-jobs { color: #14b8a6; }   /* Teal */
+.stamp-audit { color: #10b981; }  /* Green */
+.stamp-doc { color: #6366f1; }    /* Indigo */
+
+/* Inputs */
+.chat-input-area {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 10px;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    padding: 16px 20px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background-color: #1e293b;
+    color: white;
+    font-size: 15px;
+}
+
+.chat-input-area input:focus {
+    outline: none;
+    border-color: #f59e0b;
+}
+
+.chat-input-area button {
+    padding: 0 32px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f59e0b;
+    color: #0b0f19;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chat-input-area button:hover {
+    background-color: #d97706;
+}
+
+/* Action Panels (For side tabs) */
+.action-panel h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.action-panel p {
+    color: #9ca3af;
+    margin-bottom: 30px;
+}
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+}
+.action-buttons button {
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+    font-size: 15px;
+}
+.color-teal { color: #14b8a6; }
+.color-green { color: #10b981; }
+.color-marigold { color: #f59e0b; }
+
+.btn-teal { background-color: #134e4a; color: #5eead4; border: 1px solid #14b8a6; }
+.btn-teal:hover { background-color: #14b8a6; color: #000; }
+
+.btn-green { background-color: #064e3b; color: #6ee7b7; border: 1px solid #10b981; }
+.btn-green:hover { background-color: #10b981; color: #000; }
+
+.btn-marigold { background-color: #78350f; color: #fcd34d; border: 1px solid #f59e0b; }
+.btn-marigold:hover { background-color: #f59e0b; color: #000; }
+
+.btn-indigo { background-color: #312e81; color: #a5b4fc; border: 1px solid #6366f1; }
+.btn-indigo:hover { background-color: #6366f1; color: #fff; }

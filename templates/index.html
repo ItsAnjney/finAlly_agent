@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinAlly | AI Agent</title>
+    <!-- Google Fonts: Fraunces & IBM Plex -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="brand">
+                <h2>FinAlly</h2>
+                <span class="badge">watsonx powered</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" onclick="switchTab('chat')">💬 Chat Ally</li>
+                <li onclick="switchTab('jobs')">💼 Job Mentor</li>
+                <li onclick="switchTab('audit')">🧾 Expense Audit</li>
+                <li onclick="switchTab('schemes')">📜 Scheme Guide</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Agent Trail (Visible multi-agent architecture) -->
+            <div class="agent-trail">
+                <span class="trail-step" id="trail-router">1. Router Agent</span>
+                <span class="trail-divider">→</span>
+                <span class="trail-step" id="trail-tool">2. Tool Call</span>
+                <span class="trail-divider">→</span>
+                <span class="trail-step" id="trail-llm">3. Granite 4.0</span>
+            </div>
+
+            <!-- Chat Interface (Default) -->
+            <section id="chat" class="tab-content active">
+                <div class="chat-header">
+                    <h3 class="fraunces-text">FinAlly Assistant</h3>
+                    <p>Your dedicated guide for gig work and market subsidies.</p>
+                </div>
+                <div class="chat-history" id="chat-history">
+                    <div class="message bot-message">
+                        <span class="agent-stamp stamp-scheme">Router Agent</span>
+                        Namaste! I am FinAlly. How can I help you grow your business or find local work today?
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" placeholder="Ask about local jobs, PM SVANidhi, or audits..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </section>
+
+            <!-- Functional Action Tabs -->
+            <section id="jobs" class="tab-content action-panel">
+                <h3 class="fraunces-text color-teal">💼 Local Job Mentor</h3>
+                <p>Instantly scan the local JSON database for verified opportunities in your area.</p>
+                <div class="action-buttons">
+                    <button class="btn-teal" onclick="triggerAction('Are there any retail or store jobs available nearby?')">Search Retail Jobs</button>
+                    <button class="btn-teal" onclick="triggerAction('Find me local delivery or driving gigs.')">Search Delivery Gigs</button>
+                    <button class="btn-teal" onclick="triggerAction('I need daily wage construction work.')">Search Construction</button>
+                </div>
+            </section>
+
+            <section id="audit" class="tab-content action-panel">
+                <h3 class="fraunces-text color-green">🧾 Smart Expense Audit</h3>
+                <p>Verify if your recent business purchases qualify for government subsidies or loan compliance.</p>
+                <div class="action-buttons">
+                    <button class="btn-green" onclick="triggerAction('I just bought ₹5000 worth of raw materials for my street cart. Does this help my PM SVANidhi second tranche eligibility?')">Audit Inventory Purchase</button>
+                    <button class="btn-green" onclick="triggerAction('How do I maintain a bahi-khata (ledger) to prove my business income to the bank?')">Learn Ledger Auditing</button>
+                </div>
+            </section>
+
+            <section id="schemes" class="tab-content action-panel">
+                <h3 class="fraunces-text color-marigold">📜 Government Scheme Guide</h3>
+                <p>Pull exact eligibility criteria and action steps directly from the official RAG documents.</p>
+                <div class="action-buttons">
+                    <button class="btn-marigold" onclick="triggerAction('What are the exact eligibility rules for the PM SVANidhi street vendor loan?')">PM SVANidhi Rules</button>
+                    <button class="btn-marigold" onclick="triggerAction('Explain the difference between Shishu, Kishor, and Tarun loans under Mudra Yojana.')">Mudra Yojana Tiers</button>
+                    <button class="btn-indigo" onclick="triggerAction('What exact documents do I need to apply for a micro-loan? Give me a checklist.')">Generate Document Checklist</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

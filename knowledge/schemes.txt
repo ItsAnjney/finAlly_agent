@@ -1,0 +1,367 @@
+# PM SVANidhi (Pradhan Mantri Street Vendor's AtmaNirbhar Nidhi)
+
+## Overview
+
+PM SVANidhi is a Government of India micro-credit scheme launched in 2020 to provide affordable working capital loans to street vendors. The objective is to help vendors restart or expand their businesses through formal banking channels.
+
+---
+
+## Target Beneficiaries
+
+Eligible applicants include:
+
+* Street vendors operating on or before the notified eligibility date
+* Vendors with Certificate of Vending (CoV)
+* Identity Card issued by Urban Local Body (ULB)
+* Vendors identified through official surveys
+* Vendors who obtain a Letter of Recommendation (LoR) from the ULB if not surveyed
+
+Examples:
+
+* Vegetable sellers
+* Fruit vendors
+* Tea stalls
+* Food carts
+* Cobblers
+* Tailors
+* Flower sellers
+* Barbers
+* Street artisans
+* Hawkers
+
+---
+
+## Loan Amount
+
+The scheme provides loans in stages:
+
+| Cycle  | Maximum Loan |
+| ------ | ------------ |
+| First  | ₹10,000      |
+| Second | ₹20,000      |
+| Third  | ₹50,000      |
+
+Borrowers become eligible for higher loan amounts after timely repayment.
+
+---
+
+## Interest
+
+* Interest rate depends on the lending institution.
+* Government provides an interest subsidy of **7% per annum** on timely repayments.
+* Subsidy is credited directly to the beneficiary's bank account quarterly.
+
+---
+
+## Digital Transaction Incentive
+
+Beneficiaries are encouraged to use digital payments.
+
+Cashback incentives are available based on the number of eligible digital transactions every month, subject to scheme guidelines.
+
+---
+
+## Repayment Period
+
+Usually:
+
+* Up to 12 months
+* EMI or monthly repayment
+
+---
+
+## Eligibility
+
+Applicant should generally:
+
+* Be a street vendor
+* Have valid identity proof
+* Have Aadhaar
+* Have bank account
+* Possess CoV/ID card/Letter of Recommendation
+* Meet lender's verification requirements
+
+---
+
+## Required Documents
+
+Common documents include:
+
+* Aadhaar Card
+* PAN Card (if applicable)
+* Bank Account details
+* Mobile number linked with Aadhaar
+* Certificate of Vending
+* Identity Card
+* Letter of Recommendation (if required)
+* Passport-size photograph
+
+---
+
+## Benefits
+
+* Collateral-free loan
+* Interest subsidy
+* Digital payment cashback
+* Opportunity for higher loan limits
+* Builds credit history
+* Formal financial inclusion
+
+---
+
+## Common Reasons for Rejection
+
+* Applicant is not an eligible street vendor
+* Document mismatch
+* Incorrect Aadhaar details
+* Poor verification
+* Duplicate application
+* Ineligible business
+* Bank verification failure
+
+---
+
+## Frequently Asked Questions
+
+**Q:** Is collateral required?
+
+A: No.
+
+**Q:** Can existing vendors apply?
+
+A: Yes, if eligible.
+
+**Q:** Can loan amount increase?
+
+A: Yes, after timely repayment.
+
+**Q:** Is there an interest subsidy?
+
+A: Yes, 7% on timely repayment.
+
+---
+
+# Pradhan Mantri Mudra Yojana (PMMY)
+
+## Overview
+
+Pradhan Mantri Mudra Yojana (PMMY) is a Government of India initiative launched in 2015 to provide collateral-free loans to micro and small non-corporate businesses through banks, NBFCs, MFIs, and other eligible lending institutions.
+
+---
+
+## Objective
+
+Support small entrepreneurs by providing affordable credit for:
+
+* Starting a business
+* Expanding business
+* Purchasing equipment
+* Working capital
+* Business growth
+
+---
+
+## Eligible Businesses
+
+Examples include:
+
+* Retail shops
+* Manufacturing units
+* Service businesses
+* Food processing
+* Beauty salons
+* Tailoring
+* Repair shops
+* Transport services
+* Agriculture allied activities
+* Small traders
+* Professionals
+* Home-based businesses
+
+---
+
+## Loan Categories
+
+### Shishu
+
+Loan Amount:
+
+Up to ₹50,000
+
+Suitable for:
+
+* New businesses
+* Very small enterprises
+
+---
+
+### Kishore
+
+Loan Amount:
+
+Above ₹50,000 up to ₹5 lakh
+
+Suitable for:
+
+* Growing businesses
+
+---
+
+### Tarun
+
+Loan Amount:
+
+Above ₹5 lakh up to ₹10 lakh
+
+Suitable for:
+
+* Established businesses requiring expansion
+
+---
+
+### Tarun Plus
+
+Loan Amount:
+
+Above ₹10 lakh up to ₹20 lakh (for eligible borrowers who have successfully repaid previous Mudra loans and meet current scheme conditions)
+
+Suitable for:
+
+* Businesses ready for further expansion
+
+---
+
+## Collateral
+
+Generally collateral-free, subject to lender policies and applicable guidelines.
+
+---
+
+## Interest Rate
+
+No fixed interest rate.
+
+Determined by:
+
+* Lending institution
+* Applicant's credit profile
+* Business type
+* Risk assessment
+
+---
+
+## Repayment
+
+Typically:
+
+* 3–7 years
+
+May vary depending on:
+
+* Loan amount
+* Bank
+* Business nature
+
+---
+
+## Eligible Institutions
+
+Loans may be offered through:
+
+* Public Sector Banks
+* Private Banks
+* Regional Rural Banks
+* Small Finance Banks
+* Cooperative Banks (where applicable)
+* NBFCs
+* Micro Finance Institutions
+
+---
+
+## Documents Required
+
+Usually:
+
+* Aadhaar Card
+* PAN Card
+* Address proof
+* Business proof
+* Quotation for machinery/equipment (if applicable)
+* Bank statement
+* Income details (if required)
+* Passport photograph
+* GST registration (where applicable)
+* Udyam Registration (if applicable)
+
+---
+
+## Eligibility
+
+Applicant should generally:
+
+* Be an Indian citizen
+* Have a viable business plan
+* Operate a non-farm income-generating business (with certain allied activities also eligible)
+* Meet lender's credit assessment criteria
+
+---
+
+## Uses of Loan
+
+* Working capital
+* Machinery purchase
+* Shop setup
+* Equipment purchase
+* Inventory purchase
+* Business expansion
+* Vehicle purchase for commercial purposes
+* Service business setup
+
+---
+
+## Common Reasons for Rejection
+
+* Poor credit history
+* Incomplete documents
+* Weak business proposal
+* Existing loan defaults
+* Ineligible business activity
+* Low repayment capacity
+* Verification failure
+
+---
+
+## Benefits
+
+* Collateral-free financing
+* Supports MSMEs
+* Encourages entrepreneurship
+* Flexible repayment
+* Helps build formal credit history
+* Available through multiple lending institutions
+
+# Suggested Intent Categories for Agentic AI
+
+Your AI agent can classify user queries into these intents:
+
+* Scheme Eligibility
+* Required Documents
+* Loan Amount
+* Interest Rate
+* Repayment Details
+* Application Process
+* Application Status
+* Subsidy Information
+* Digital Cashback (PM SVANidhi)
+* Loan Categories (Mudra)
+* Business Eligibility
+* Rejection Reasons
+* Loan Renewal
+* EMI Calculation
+* Nearby Bank Branch Guidance
+* Government Scheme Comparison
+* FAQs
+* Complaint & Grievance Support
+* Document Verification Guidance
+
+
