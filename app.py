@@ -1,7 +1,7 @@
 import os
 import re
 import json
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 from dotenv import load_dotenv
 
 from ibm_watsonx_ai import Credentials
@@ -250,11 +250,27 @@ def chat():
     # 1. STAGE 1 ROUTER (no API call)
     intent = classify_intent(user_message)
 
+    # Conversation stickiness: if this message has no routing keywords of
+    # its own (e.g. a plain answer to a clarifying question we just asked,
+    # like "I am a farmer in haryana"), stay on whatever intent the last
+    # turn resolved to instead of re-triggering the generic clarify prompt.
+    if intent == "unclear" and session.get("last_intent"):
+        intent = session["last_intent"]
+
     if intent == "unclear":
         return jsonify({"response": CLARIFY_RESPONSE, "agent": "router"})
 
     tool_fn, system_prompt = TOOL_MAP[intent]
-    agent_context = tool_fn(user_message)
+
+    # Give tools a little short-term memory: combine the previous turn's
+    # message with this one so keyword-based tools (like scheme detection)
+    # have a better chance of picking up context from a multi-turn reply.
+    last_user_message = session.get("last_user_message", "")
+    combined_query = f"{last_user_message} {user_message}".strip()
+    agent_context = tool_fn(combined_query)
+
+    session["last_intent"] = intent
+    session["last_user_message"] = user_message
 
     # 2. STAGE 2: THE AGENT GENERATES THE RESPONSE
     full_prompt = (
