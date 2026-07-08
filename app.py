@@ -173,12 +173,75 @@ def tool_application_checklist(user_query):
     docs = extract_section(scheme, "Documents") or extract_section(scheme, "Required Documents") or ""
     return f"DOCUMENT CONTEXT for {scheme}:\n{docs}"
 
+LEDGER_KEYWORDS = ["ledger", "bahi-khata", "bahi khata", "bookkeeping", "record keeping", "track income"]
+AMOUNT_PATTERN = re.compile(r'(?:₹|rs\.?|inr)\s?([\d,]+)|([\d,]+)\s?(?:rupees|rs\b)', re.IGNORECASE)
+
+def tool_audit_expense(user_query):
+    """
+    Tool 5: Lightweight expense/ledger audit helper for the Expense Audit tab.
+
+    - If the message mentions a purchase amount, pulls the matching scheme's
+      Loan Amount / Loan Categories section so the model can reason about how
+      that spend relates to tranche/category structure (without inventing
+      numbers that aren't in schemes.txt).
+    - If the message is about record-keeping instead, returns practical
+      bahi-khata guidance for informal small-business bookkeeping.
+    """
+    amount_match = AMOUNT_PATTERN.search(user_query)
+    is_ledger_question = any(k in user_query.lower() for k in LEDGER_KEYWORDS)
+
+    if amount_match:
+        amount = (amount_match.group(1) or amount_match.group(2)).replace(",", "")
+        scheme = detect_scheme(user_query)
+        if scheme:
+            loan_section = extract_section(scheme, "Loan") or ""
+            return (
+                f"EXPENSE AUDIT CONTEXT:\n"
+                f"User-reported purchase amount: ₹{amount}\n"
+                f"Relevant scheme: {scheme}\n"
+                f"{loan_section}\n\n"
+                f"Task: Explain in simple terms how this purchase relates to the loan "
+                f"tranche/category structure above. Do NOT invent numbers not present in "
+                f"the context. Clarify that moving to a higher tranche/category usually "
+                f"depends on timely repayment history, not spending amount, unless the "
+                f"context explicitly states otherwise."
+            )
+        return (
+            f"EXPENSE AUDIT CONTEXT:\n"
+            f"User-reported purchase amount: ₹{amount}\n"
+            f"No specific scheme was mentioned. Ask the user which scheme "
+            f"(PM SVANidhi or Mudra Yojana) their loan falls under, since "
+            f"tranche/category rules differ between schemes."
+        )
+
+    if is_ledger_question:
+        return (
+            "LEDGER GUIDANCE CONTEXT:\n"
+            "Practical bahi-khata (informal ledger) tips for small vendors/entrepreneurs:\n"
+            "- Record every sale and purchase daily, even small cash transactions.\n"
+            "- Keep personal and business expenses in separate pages or columns.\n"
+            "- Keep purchase receipts/bills, even handwritten ones, as proof of expenditure.\n"
+            "- Note loan repayments and dates separately to build a clean repayment record.\n"
+            "- A consistent ledger is often what banks look at when assessing repayment "
+            "capacity for a higher loan tranche or renewal.\n"
+            "Task: Turn this into simple, encouraging, jargon-free advice."
+        )
+
+    return (
+        "AUDIT CONTEXT: The user seems to be asking about an expense, purchase, or "
+        "record-keeping question, but no specific amount or clear ledger topic was "
+        "detected. Ask them to share the purchase amount and which scheme they're "
+        "asking about, or clarify if they want general bookkeeping tips."
+    )
+
 # ==========================================
 # 🧠 AGENT ROUTER LOGIC (two-stage)
 # ==========================================
 
 # Stage 1: cheap keyword classification, no API call.
 INTENT_KEYWORDS = {
+    "audit":       ["audit", "expense", "receipt", "ledger", "bahi-khata", "bahi khata",
+                     "bookkeeping", "invoice", "purchase", "bought", "spent", "tranche"],
     "eligibility": ["eligible", "eligibility", "qualify", "can i get", "am i able", "do i qualify"],
     "checklist":   ["document", "documents", "papers", "checklist", "what do i need", "kyc"],
     "job":         ["job", "work", "hire", "vacancy", "employment", "salary", "hiring"],
@@ -197,14 +260,24 @@ def classify_intent(message):
         return matched[0]
     if len(matched) == 0:
         return "unclear"
-    # Multiple matches: apply priority order (most specific tool wins)
-    priority = ["eligibility", "checklist", "job", "scheme"]
+    # Multiple matches: apply priority order (most specific tool wins).
+    # "audit" goes first so a message like "I bought ₹5000 of materials,
+    # does this help my eligibility?" routes to the audit tool instead of
+    # the generic eligibility one.
+    priority = ["audit", "eligibility", "checklist", "job", "scheme"]
     for p in priority:
         if p in matched:
             return p
     return "unclear"
 
 TOOL_MAP = {
+    "audit": (
+        tool_audit_expense,
+        "You are 'FinAlly'. Use the EXPENSE AUDIT CONTEXT or LEDGER GUIDANCE CONTEXT to give "
+        "the user simple, practical advice about their purchase or record-keeping question. "
+        "Be encouraging, never invent numbers that aren't in the context, and ask exactly "
+        "one clarifying question if something important is missing."
+    ),
     "eligibility": (
         tool_check_eligibility,
         "You are 'FinAlly'. Use the ELIGIBILITY CONTEXT to tell the user clearly whether they "
