@@ -236,3 +236,15 @@ body {
 
 .btn-indigo { background-color: #312e81; color: #a5b4fc; border: 1px solid #6366f1; }
 .btn-indigo:hover { background-color: #6366f1; color: #fff; }
+
+/* Sidebar signature */
+.made-by {
+    margin-top: auto;
+    padding-top: 20px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #f59e0b; /* Marigold, matches brand accent */
+    opacity: 0.7;
+    letter-spacing: 0.3px;
+}
